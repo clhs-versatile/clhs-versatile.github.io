@@ -12,13 +12,13 @@
     <div id="root">
         <div class="titleBar">
             <p class="title">中大壢中成果發表會Versatile</p>
-            <div class="count_text">
-                <p>month</p>
-                <p>day</p>
-                <p>hour</p>
-                <p>min</p>
-                <p>sec</p>
-            </div>
+            <ul class="count_text">
+                <li>month</li>
+                <li>day</li>
+                <li>hour</li>
+                <li>min</li>
+                <li>sec</li>
+            </ul>
             <ul class="count_down">
                 <li id="monthNum">00</li>
                 <li id="dayNum">00</li>
@@ -56,8 +56,8 @@
                     text-align: center;
             }
 
-                .count_text p {
-                    
+                .count_text li {
+                    display: inline-block;
                     margin: 50px;
                     font-family: cute;
                     font-size: 36px;

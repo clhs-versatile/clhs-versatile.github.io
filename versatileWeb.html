@@ -1,85 +1,176 @@
 <html>
-<head>
-    <title>Versatile</title>
-    <!--這裡是註解，meta name="tile"與meta name="desciption"是goole搜尋下的網頁標題與描述-->
-    <meta name="title" content="中央大學附屬中壢高級中學數理資優班成果發表會「Versatile」宣傳網站" />
-    <mvc:resources location="https://clhs-versatile.github.io/fonts/NewFont.ttf" mapping="fonts/NewFont.ttf"/>
-    <meta charset:"utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-    <meta name="language" , content="tw" />
-</head>
-<body>
-    <div id="root">
-        <div class="titleBar">
-            <p class="title">中大壢中成果發表會Versatile</p>
-            <ul class="count_text">
-                <li>month</li>
-                <li>day</li>
-                <li>hour</li>
-                <li>min</li>
-                <li>second</li>
-            </ul>
-            <ul class="count_down">
-                <li id="monthNum">00</li>
-                <li id="dayNum">00</li>
-                <li id="hourNum">00</li>
-                <li id="minNum">00</li>
-                <li id="secondNum">00</li>
-            </ul>
+    <head>
+        <title>Versatile</title>
+        <!--這裡是註解，meta name="tile"與meta name="desciption"是goole搜尋下的網頁標題與描述-->
+        <meta name="title" content="中央大學附屬中壢高級中學數理資優班成果發表會「Versatile」宣傳網站" />
+        
+        <meta charset:"utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
+        <meta name="language" , content="tw" />
+    </head>
+    <style>
+    body{
+        overflow-y: scroll;
+        overflow-x: hidden;
+        margin:0px;
+    }
+    @font-face{
+        font-family:cute;
+        src:url("fonts/NewFont.ttf");
+    }
+    </style>
+    <body>
+        
+        <div id="root">
+            <div class="titleBar">
+                <div class = "title_row">
+                    <p class="title">中大壢中成果發表會Versatile</p>
+                </div>
+                <div class="count_text">
+                    <p>month</p>
+                    <p>day</p>
+                    <p>hour</p>
+                    <p>min</p>
+                    <p>sec</p>
+                </div>
+                <ul class="count_down">
+                    <li>00</li>
+                    <li>00</li>
+                    <li>00</li>
+                    <li>00</li>
+                    <li>00</li>
+                </ul>
+                
+                
+            </div>
+            <style>
+                
+                .title_row{
+                    display:flex;
+                    justify-content:center;
+                    align-items:center;
+                    text-align:center;
+                    height:300px;
+                }
+                .title{
+                    
+                    font-family:cute;
+                    font-size:50px;
+                    line-height:100px;
+                
+                    
+                }
 
+                .titleBar ul{
+                    display:flex;
+                    justify-content:center;
+                    align-items:center;
+                    text-align:center;
+                    height:150px;
+                    list-style:none;
+                }
+                
+                .titleBar li{
+                    display: inline-block;
+                    margin:50px;
+                    font-family:cute;
+                    font-size:36px;
+                    transform:translate(-50%, 0);
+                }
+                .count_text{
+                    height:10px;
+                    
+                }
+                .count_text p{
+                    position:absolute;
+                    font-family:cute;
+                    font-size:36px;
+                    left : 50%; 
+                    line-height:10px;
+                    transform:translate(-50%, 0);
+                }
+                .count_text p:nth-child(1){
+                   margin-left:-272px;
+                }
+                .count_text p:nth-child(2){
+                    margin-left:-136px;
+                }
+                .count_text p:nth-child(3){
+                    
+                }
+                .count_text p:nth-child(4){
+                    margin-left:136px;
+                }
+                .count_text p:nth-child(5){
+                    margin-left:272px;
+                }
+                
+                
+                
+                
+                @media screen and (orientation:portrait){
+                    .title{
+                        font-size:40px;
+                    }
+                    .title_row{
+                        padding:30% 0 0;
+                        height:200px;
+                    }
+                    .count_text p{
+                        position:absolute;
+                        font-family:cute;
+                        font-size:32px;
+                        left : 50%; 
+                        line-height:10px;
+                        transform:translate(-50%, 0);
+                    }
+                    .count_text p:nth-child(1){
+                        margin-left:-115px;
+                        top:385px;
+                    }
+                    .count_text p:nth-child(2){
+                        margin-left:0px;
+                        top:385px;
+                    }
+                    .count_text p:nth-child(3){
+                        margin-left:115px;
+                        top:385px;
+                    }
+                    .count_text p:nth-child(4){
+                        margin-left:-57px;
+                        top:490px;
+                    }
+                    .count_text p:nth-child(5){
+                        margin-left:57px;
+                        top:490px;
 
-        </div>
-        <style>
-            .titleBar {
-                height: 300px;
-            }
-            .titleBar ul {
-                justify-content: start, end;
-                list-style: none;
-                text-align: center;
-            }
-            .titleBar li {
-                display: inline-block;
-                margin: 50px;
-                font-family: cute;
-                font-size: 36px;
-                transform: translate(-50%, 0);
-            }
-
-            .count_text li{
-                margin:30px;
-            }
-            .count_text li:nth-child(2){
-                left:-30px
-            }
-            .count_text li:nth-child(3){
-                left:30px
-            }
-            .count_text li:nth-child(4){
-                left:30px
-            }
-            .count_text li:nth-child(5){
-                left:50px
-            }
-            .title {
-                font-family: cute;
-                font-size: 50px;
-                height: 300px;
-                text-align: center;    
-                line-height: 300px;
-            }
-
-            @font-face {
-                font-family: cute;
-                src: url("fonts/NewFont.ttf");
-            }
-        </style>
-        <script>const report = new Date(2024, 4, 27, 8, 0, 0);
+                    }
+                    .titleBar ul{
+                        padding:75px 0 0;
+                        flex-wrap:wrap;
+                        height:200px;
+                        
+                    }
+                    .titleBar li{
+                        margin:40px;
+                        font-size:32px;
+                        line-height:10px;
+                        transform:translate(0, 0);
+                    }
+                }
+                @media screen and (orientation:landscape){
+                    .title{
+                        font-size:40px;
+                    }
+                }
+            </style>
+            <script>
+                const report = new Date(2024, 4, 27, 8, 0, 0);
                 var list = document.querySelectorAll(".count_down li");
-
+                
                 timer();
                 var timeId = setInterval(timer, 1000);
-
+                    
                 function timer(){
                     var time_now = Date.now();
                     var timeDiff = report.getTime() - time_now;
@@ -90,7 +181,7 @@
                     let minNum = Math.floor(timeDiff / 1000 / 60);
                     timeDiff -= minNum * 1000 * 60;
                     let secNum = Math.floor(timeDiff / 1000);
-
+                    
                     if(dayNum < 10){
                         dayNum = "0" + dayNum;
                     }
@@ -108,7 +199,211 @@
                     list[2].innerText = hourNum;
                     list[3].innerText = minNum;
                     list[4].innerText = secNum;
-                }</script>
-    </div>
-</body>
+                }
+                
+            </script>
+            <div class="program">
+                <div>
+                    <table>
+                        <tr>
+                            <td>13:10~13:30</td>
+                            <td align="center">開幕</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td align="center">「乓」然大悟—探討水瓶內乒乓球自高處掉落後反彈飛升的現象</td>
+                            <td> <a href="https://www.instagram.com/clhs_219_versatile?igsh=MTlhNTlhend5cGNyYg==">IG</a></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td align="center">應用無人機飛行載具測估桃園藻礁覆蓋率的月際變化</td>
+                            <td> <a href="https://www.instagram.com/clhs_219_versatile?igsh=MTlhNTlhend5cGNyYg==">IG</a></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td align="center">巴斯卡四角錐</td>
+                            <td> <a href="https://www.instagram.com/clhs_219_versatile?igsh=MTlhNTlhend5cGNyYg==">IG</a></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td align="center">串場表演</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td align="center">「桿」菌入框：ZIF-90對大腸桿菌保護之研究</td>
+                            <td> <a href="https://www.instagram.com/clhs_219_versatile?igsh=MTlhNTlhend5cGNyYg==">IG</a></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td align="center">『藻』夕共處—探討滿江紅與念珠藻的共生關係</td>
+                            <td> <a href="https://www.instagram.com/clhs_219_versatile?igsh=MTlhNTlhend5cGNyYg==">IG</a></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td align="center">跟隨機器人：隨心所欲，跟著走</td>
+                            <td> <a href="https://www.instagram.com/clhs_219_versatile?igsh=MTlhNTlhend5cGNyYg==">IG</a></td>
+                        </tr>
+                        <tr>
+                            <td>14:30～14:50</td>
+                            <td align="center">中場休息</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td align="center">活性碳魔法：汙水大變身</td>
+                            <td> <a href="https://www.instagram.com/clhs_219_versatile?igsh=MTlhNTlhend5cGNyYg==">IG</a></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td align="center">黑腹果蠅的營養素選擇與生殖生長的表現</td>
+                            <td> <a href="https://www.instagram.com/clhs_219_versatile?igsh=MTlhNTlhend5cGNyYg==">IG</a></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td align="center">Complex Power Tower</td>
+                            <td> <a href="https://www.instagram.com/clhs_219_versatile?igsh=MTlhNTlhend5cGNyYg==">IG</a></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td align="center">串場表演</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td align="center">菌界交響—蕈類在不同環境下的電訊號變化</td>
+                            <td> <a href="https://www.instagram.com/clhs_219_versatile?igsh=MTlhNTlhend5cGNyYg==">IG</a></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td align="center">「直」球「對決」—探討最小平方法和霍夫轉換偵側環境直線的準確率</td>
+                            <td> <a href="https://www.instagram.com/clhs_219_versatile?igsh=MTlhNTlhend5cGNyYg==">IG</a></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td align="center">「塑」以千計—探討各類水體中的塑膠微粒以及光譜分析</td>
+                            <td> <a href="https://www.instagram.com/clhs_219_versatile?igsh=MTlhNTlhend5cGNyYg==">IG</a></td>
+                        </tr>
+                        <tr>
+                            <td>15:55～16:00</td>
+                            <td align="center">閉幕</td>
+                        </tr>
+                    </table>
+                </div>
+                <style type="text/css">
+                    
+                    table {
+                        border-collapse: collapse;
+                        border: 1px solid black;
+                        width:800px;
+                        height:600px;
+                    }
+                
+                    td {
+                        text-align:center;
+                        border: 1px solid black;
+                        font-family:cute;
+                    }
+                    a{
+                        text-decoration:none;
+                        color:#000000;
+                    }
+                </style>
+            </div>
+            <style>
+                .program{
+                    
+                    height:700px;
+                    display:flex;
+                    padding-top:7%;
+                    justify-content:center;
+                }
+            </style>
+            <div class="introduce">
+                <div class="item">
+                    <div class="item-title">
+                        <p>數學組</p>
+                    </div>
+                    <div class="item-text">
+                        <p class>在此增加簡介...</p>
+                    </div>
+                    <div class="pdf-show">
+                        <iframe src="https://drive.google.com/file/d/1dusbc-ORDy8fe5BhmITlAvDVBqZ85UZt/preview" width="640" height="300" allow="autoplay"></iframe>
+                    </div>
+                </div>
+                <button class="left">left</button>
+                <button class="right">right</button>
+            </div>
+            <style>
+            .introduce{
+                height:800px;
+                
+            }
+            .item-title{
+                height:75px;
+                display:flex;
+                align-items:center;
+                justify-content:center;
+            }
+            .item-title p{
+                font-size:32px;
+                font-family:cute;
+            }
+            .item-text{
+                display:flex;
+                align-items:center;
+                justify-content:center;
+            }
+            .pdf-show p{
+                font-size:24px;
+                font-family:cute;
+            }
+            .pdf-show{
+                display:flex;
+                align-items:center;
+                justify-content:center;
+            }
+            .left:hover{
+                background-color:#989898;
+            }
+            .left:active{
+                background-color:#ffffff;
+            }
+            </style>
+            <script>
+                
+            </script>
+            <div class="About-us">
+                <div class = "About-title">
+                    <p>About us</p>
+                </div>
+                <ul class = "About-content">
+                    <li>主辦單位：國立中央大學附屬中壢高中</li>
+                    <li>指導單位：</li>
+                    <li>協辦單位：</li>
+                    <li>贊助單位：逗點文創事業有限公司</li>
+                    <li>校網網址：</li>
+                </ul>
+            </div>
+            <style>
+            .About-us{
+                background:#4683B7;
+                height:300px;
+            }
+            .About-title{
+                height:75px;
+                display:flex;
+                align-items:center;
+            }
+            .About-us p {
+                padding-top:2%;
+                margin-left:20px;
+                font-family:cute;
+                font-size:24px;
+                color:#FFFFFF;
+            }
+            .About-us li{
+                font-family:cute;
+                color:#FFFFFF;
+            }
+            </style>
+        </div>
+    </body>
 </html>

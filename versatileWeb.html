@@ -328,7 +328,7 @@
                         <iframe src="https://drive.google.com/file/d/1dusbc-ORDy8fe5BhmITlAvDVBqZ85UZt/preview" width="640" height="300" allow="autoplay"></iframe>
                     </div>
                 </div>
-                <div class="item">
+                <div class="item" id="current">
                     <div class="item-title">
                         <p>數學組</p>
                     </div>
@@ -390,8 +390,147 @@
             }
             </style>
             <script>
-                
-            </script>
+            const speed = 0.1;
+            const fadeOutSpeed = 0.3;
+            const fadeInSpeed = 0.5;
+            var current = document.querySelector("#current");
+            var list = document.querySelectorAll('.item');
+            var startX = 0;
+
+            function findRole() {
+                let Index = -1;
+                for (let i = 0; i < list.length; i++) {
+                    if (list[i].id == "current") {
+                        Index = i;
+                    }
+                }
+                let output = [];
+                if (Index - 1 < 0) {
+                    output.push(list.length - 1);
+                }
+                else {
+                    output.push(Index - 1);
+                }
+                output.push(Index)
+                if (Index + 1 >= list.length) {
+                    output.push(0);
+                }
+                else {
+                    output.push(Index + 1);
+                }
+                return output;
+            }
+            function start(e) {
+                startX = e.targetTouches[0].pageX;
+            }
+            function move(e) {
+
+                let Index = findRole();
+                //[0,1,2] = [previous, current, next]
+                var centerMove = (e.targetTouches[0].pageX - startX);
+                list[Index[1]].style.left = centerMove + "px";
+                if (centerMove < 0) {
+                    list[Index[0]].style.left = window.innerWidth * -1;
+                    list[Index[2]].style.left = centerMove + window.innerWidth + "px";
+                }
+                else {
+                    list[Index[2]].style.left = window.innerWidth;
+                    list[Index[0]].style.left = centerMove - window.innerWidth + "px";
+                }
+
+                e.preventDefault();
+            }
+            function lerp(a, b, alpha) {
+                let dist = (b - a);
+                if (Math.abs(dist) < 5) {
+                    return b;
+                }
+                return a + alpha * dist;
+            }
+            function lerpMove(listI, endPos) {
+                let timerId = setInterval(function () {
+                    list[listI].style.left = lerp(list[listI].offsetLeft, endPos, speed) + "px";
+
+                    if (Math.abs(list[listI].offsetLeft - endPos) < 1) {
+
+                        list[listI].style.left = endPos + "px";
+
+                        clearInterval(timerId);
+                    }
+                }, 10);
+            }
+            function back() {
+                let Index = findRole();
+
+                lerpMove(Index[1], 0);
+                lerpMove(Index[0], window.innerWidth * -1);
+                lerpMove(Index[2], window.innerWidth);
+            }
+            function fadeOut(target) {
+                let timerId = setInterval(function () {
+                    target.style.opacity = lerp(target.style.opacity, 0, speed);
+
+                    if (Math.abs(target.style.opacity - 0) < 1) {
+
+                        target.style.opacity = "0";
+
+                        clearInterval(timerId);
+                    }
+                }, 10);
+            }
+            function fadeIn(target) {
+                let timerId = setInterval(function () {
+                    target.style.opacity = lerp(target.style.opacity, 1, speed);
+
+                    if (Math.abs(target.style.opacity - 1) < 1) {
+
+                        target.style.opacity = "1";
+
+                        clearInterval(timerId);
+                    }
+                }, 10);
+            }
+            function end(e) {
+
+                let Index = findRole();
+
+                if (list[Index[1]].offsetLeft >= 0.3 * window.innerWidth) {
+
+                    lerpMove(Index[1], window.innerWidth);
+                    lerpMove(Index[0], 0);
+
+                    list[Index[0]].id = "current";
+                    list[Index[1]].id = "";
+                    list[Index[0]].addEventListener('touchstart', start);
+                    list[Index[0]].addEventListener('touchmove', move);
+                    list[Index[0]].addEventListener('touchend', end);
+                    list[Index[1]].removeEventListener('touchstart', start);
+                    list[Index[1]].removeEventListener('touchmove', move);
+                    list[Index[1]].removeEventListener('touchend', end);
+                }
+                else if (this.offsetLeft <= -0.3 * window.innerWidth) {
+                    lerpMove(Index[1], window.innerWidth * -1);
+                    lerpMove(Index[2], 0);
+                    list[Index[2]].id = "current";
+                    list[Index[1]].id = "";
+                    list[Index[2]].addEventListener('touchstart', start);
+                    list[Index[2]].addEventListener('touchmove', move);
+                    list[Index[2]].addEventListener('touchend', end);
+                    list[Index[1]].removeEventListener('touchstart', start);
+                    list[Index[1]].removeEventListener('touchmove', move);
+                    list[Index[1]].removeEventListener('touchend', end);
+                }
+                else {
+                    back();
+                }
+            }
+
+
+            current.addEventListener('touchstart', start);
+            current.addEventListener('touchmove', move);
+            current.addEventListener('touchend', end);
+
+        </script>
             <div class="About-us">
                 <div class = "About-title">
                     <p>About us</p>

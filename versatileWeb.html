@@ -1,0 +1,223 @@
+<html>
+<head>
+    <title>Versatile</title>
+    <!--這裡是註解，meta name="tile"與meta name="desciption"是goole搜尋下的網頁標題與描述-->
+    <meta name="title" content="中央大學附屬中壢高級中學數理資優班成果發表會「Versatile」宣傳網站" />
+
+    <meta charset:"utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="language" , content="tw" />
+</head>
+<body>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+    </style>
+    <div class="screen">
+        <!-- drag image -->
+        <div class="dragImageContainer">
+            <div class="bar-ul">
+
+                <img src="1.png" style="left:-100%;" />
+                <img src="a.png" id="current" />
+                <img src="b.png" style="left:100%;" />
+
+
+            </div>
+        </div>
+        <p id="debug">distance: haven't started yet</p>
+        <style>
+
+            .bar-ul {
+                position: relative;
+                height: 600px;
+                margin: 0;
+                padding: 0;
+            }
+
+                .bar-ul img {
+                    position: absolute;
+                    display: block;
+                    width: 100vw;
+                    object-fit: cover;
+                    height: 600px;
+                    background: #000000;
+                }
+        </style>
+        <script>
+            const speed = 0.1;
+            const fadeOutSpeed = 0.3;
+            const fadeInSpeed = 0.5;
+            var current = document.querySelector("#current");
+            var list = document.querySelectorAll('.bar-ul img');
+            var startX = 0;
+
+            function findRole() {
+                let Index = -1;
+                for (let i = 0; i < list.length; i++) {
+                    if (list[i].id == "current") {
+                        Index = i;
+                    }
+                }
+                let output = [];
+                if (Index - 1 < 0) {
+                    output.push(list.length - 1);
+                }
+                else {
+                    output.push(Index - 1);
+                }
+                output.push(Index)
+                if (Index + 1 >= list.length) {
+                    output.push(0);
+                }
+                else {
+                    output.push(Index + 1);
+                }
+                return output;
+            }
+            function start(e) {
+                startX = e.targetTouches[0].pageX;
+            }
+            function move(e) {
+
+                let Index = findRole();
+                //[0,1,2] = [previous, current, next]
+                var centerMove = (e.targetTouches[0].pageX - startX);
+                list[Index[1]].style.left = centerMove + "px";
+                if (centerMove < 0) {
+                    list[Index[0]].style.left = window.innerWidth * -1;
+                    list[Index[2]].style.left = centerMove + window.innerWidth + "px";
+                }
+                else {
+                    list[Index[2]].style.left = window.innerWidth;
+                    list[Index[0]].style.left = centerMove - window.innerWidth + "px";
+                }
+
+                e.preventDefault();
+            }
+            function lerp(a, b, alpha) {
+                let dist = (b - a);
+                if (Math.abs(dist) < 5) {
+                    return b;
+                }
+                return a + alpha * dist;
+            }
+            function lerpMove(listI, endPos) {
+                let timerId = setInterval(function () {
+                    list[listI].style.left = lerp(list[listI].offsetLeft, endPos, speed) + "px";
+
+                    if (Math.abs(list[listI].offsetLeft - endPos) < 1) {
+
+                        list[listI].style.left = endPos + "px";
+
+                        clearInterval(timerId);
+                    }
+                }, 10);
+            }
+            function back() {
+                let Index = findRole();
+
+                lerpMove(Index[1], 0);
+                lerpMove(Index[0], window.innerWidth * -1);
+                lerpMove(Index[2], window.innerWidth);
+            }
+            function fadeOut(target) {
+                let timerId = setInterval(function () {
+                    target.style.opacity = lerp(target.style.opacity, 0, speed);
+
+                    if (Math.abs(target.style.opacity - 0) < 1) {
+
+                        target.style.opacity = "0";
+
+                        clearInterval(timerId);
+                    }
+                }, 10);
+            }
+            function fadeIn(target) {
+                let timerId = setInterval(function () {
+                    target.style.opacity = lerp(target.style.opacity, 1, speed);
+
+                    if (Math.abs(target.style.opacity - 1) < 1) {
+
+                        target.style.opacity = "1";
+
+                        clearInterval(timerId);
+                    }
+                }, 10);
+            }
+            function end(e) {
+
+                let Index = findRole();
+
+                if (list[Index[1]].offsetLeft >= 0.3 * window.innerWidth) {
+
+                    lerpMove(Index[1], window.innerWidth);
+                    lerpMove(Index[0], 0);
+
+                    list[Index[0]].id = "current";
+                    list[Index[1]].id = "";
+                    list[Index[0]].addEventListener('touchstart', start);
+                    list[Index[0]].addEventListener('touchmove', move);
+                    list[Index[0]].addEventListener('touchend', end);
+                    list[Index[1]].removeEventListener('touchstart', start);
+                    list[Index[1]].removeEventListener('touchmove', move);
+                    list[Index[1]].removeEventListener('touchend', end);
+                }
+                else if (this.offsetLeft <= -0.3 * window.innerWidth) {
+                    lerpMove(Index[1], window.innerWidth * -1);
+                    lerpMove(Index[2], 0);
+                    list[Index[2]].id = "current";
+                    list[Index[1]].id = "";
+                    list[Index[2]].addEventListener('touchstart', start);
+                    list[Index[2]].addEventListener('touchmove', move);
+                    list[Index[2]].addEventListener('touchend', end);
+                    list[Index[1]].removeEventListener('touchstart', start);
+                    list[Index[1]].removeEventListener('touchmove', move);
+                    list[Index[1]].removeEventListener('touchend', end);
+                }
+                else {
+                    back();
+                }
+            }
+
+
+            current.addEventListener('touchstart', start);
+            current.addEventListener('touchmove', move);
+            current.addEventListener('touchend', end);
+
+        </script>
+        <!-- article -->
+        <div class="article-background">
+            <div class="article-start">
+                <article>
+                    <p>測試文字</p>
+                    <p>Hello world</p>
+                </article>
+            </div>
+
+            <iframe class="video" width="640" height="360" src="https://www.youtube.com/embed/plHGlY4isBA" title="跟隨機器人" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            <style>
+                @media screen and (orientation:portrait) {
+                    .video {
+                        width: 320px;
+                        height: 180px;
+                    }
+                }
+            </style>
+        </div>
+        <style>
+            .article-background {
+                position: relative;
+                background: #ffffff;
+                width: 70vw;
+                height: 100%;
+                left: 50%;
+                transform: translate(-50%, 0);
+            }
+        </style>
+    </div>
+</body>
+</html>

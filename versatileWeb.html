@@ -399,7 +399,7 @@
             }
             </style>
             <script>
-            const speed = 0.1;
+            const speed = 0.3;
             const fadeOutSpeed = 0.3;
             const fadeInSpeed = 0.5;
             var current = document.querySelector("#current");
@@ -467,7 +467,7 @@
                 let timerId = setInterval(function () {
                     list_item[listI].style.left = lerp(list_item[listI].offsetLeft, endPos, speed) + "px";
                     lerping.push([listI, timerId]);
-                    if (Math.abs(list_item[listI].offsetLeft - endPos) < 0.2*Math.abs(startPos - endPos)) {
+                    if (Math.abs(list_item[listI].offsetLeft - endPos) < 0.05*Math.abs(startPos - endPos)) {
 
                         list_item[listI].style.left = endPos + "px";
                         for(let i = 0; i < lerping.length; i++){

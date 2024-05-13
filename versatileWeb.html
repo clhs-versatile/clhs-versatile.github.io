@@ -467,7 +467,7 @@
                 let timerId = setInterval(function () {
                     list_item[listI].style.left = lerp(list_item[listI].offsetLeft, endPos, speed) + "px";
                     lerping.push([listI, timerId, endPos]);
-                    if (Math.abs(list_item[listI].offsetLeft - endPos) < 0.05*Math.abs(startPos - endPos)) {
+                    if (Math.abs(list_item[listI].offsetLeft - endPos) < 0.02*Math.abs(startPos - endPos)) {
 
                         list_item[listI].style.left = endPos + "px";
                         for(let i = 0; i < lerping.length; i++){

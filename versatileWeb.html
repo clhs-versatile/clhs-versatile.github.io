@@ -457,10 +457,11 @@
                 return a + alpha * dist;
             }
             function lerpMove(listI, endPos) {
+                let startPos = list_item[listI].offsetLeft;
                 let timerId = setInterval(function () {
                     list_item[listI].style.left = lerp(list_item[listI].offsetLeft, endPos, speed) + "px";
 
-                    if (Math.abs(list_item[listI].offsetLeft - endPos) < 1) {
+                    if (Math.abs(list_item[listI].offsetLeft - endPos) < 0.2*Math.abs(startPos - endPos)) {
 
                         list_item[listI].style.left = endPos + "px";
 

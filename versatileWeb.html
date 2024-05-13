@@ -404,6 +404,7 @@
             const fadeInSpeed = 0.5;
             var current = document.querySelector("#current");
             var list_item = document.querySelectorAll('.item');
+            var lerping = [];
             var startX = 0;
 
             function findRole() {
@@ -457,15 +458,24 @@
                 return a + alpha * dist;
             }
             function lerpMove(listI, endPos) {
+                for(let i = 0; i < lerping.length; i++){
+                    if(lerping[i][0] == listI){
+                        clearInterval(lerping[i][1]);
+                    }
+                }
                 let startPos = list_item[listI].offsetLeft;
                 let timerId = setInterval(function () {
                     list_item[listI].style.left = lerp(list_item[listI].offsetLeft, endPos, speed) + "px";
-
+                    lerping.push([listI, timerId]);
                     if (Math.abs(list_item[listI].offsetLeft - endPos) < 0.2*Math.abs(startPos - endPos)) {
 
                         list_item[listI].style.left = endPos + "px";
-
-                        clearInterval(timerId);
+                        for(let i = 0; i < lerping.length; i++){
+                            if(lerping[i][0] == listI){
+                                clearInterval(lerping[i][1]);
+                            }
+                        }
+                        
                     }
                 }, 10);
             }

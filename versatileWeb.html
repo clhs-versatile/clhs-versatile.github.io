@@ -434,7 +434,11 @@
                 startX = e.targetTouches[0].pageX;
             }
             function move(e) {
-
+                for(let i = 0; i < lerping.length; i++){
+                    list_item[lerping[i][0]].style.left = lerping[i][2] + "px";
+                    clearInterval(lerping[i][1]);
+                }
+                lerping = [];
                 let Index = findRole();
                 //[0,1,2] = [previous, current, next]
                 var centerMove = (e.targetTouches[0].pageX - startX);
@@ -457,14 +461,8 @@
             }
             function lerpMove(listI, endPos) {
 
-                list_item[listI].style.left = endPos + "px";
-                /*
-                for(let i = 0; i < lerping.length; i++){
-                    if(lerping[i][0] == listI){
-                        list_item[lerping[i][0]].style.left = lerping[i][2] + "px";
-                        clearInterval(lerping[i][1]);
-                    }
-                }
+                //list_item[listI].style.left = endPos + "px";
+
                 let startPos = list_item[listI].offsetLeft;
                 let timerId = setInterval(function () {
                     list_item[listI].style.left = lerp(list_item[listI].offsetLeft, endPos, speed) + "px";
@@ -473,13 +471,13 @@
 
                         list_item[listI].style.left = endPos + "px";
                         for(let i = 0; i < lerping.length; i++){
-                            if(lerping[i][0] == listI){
-                                clearInterval(lerping[i][1]);
+                            if(lerping[i][1] == timerId){
+                                lerping.splice(i, i);
                             }
                         }
-                        
+                        clearInterval(timerId);
                     }
-                }, 10);*/
+                }, 10);
             }
             function back() {
                 let Index = findRole();

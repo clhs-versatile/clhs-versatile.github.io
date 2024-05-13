@@ -451,7 +451,6 @@
                     list_item[Index[0]].style.left = centerMove - window.innerWidth + "px";
                 }
 
-                e.preventDefault();
             }
             function lerp(a, b, alpha) {
                 let dist = (b - a);
@@ -521,7 +520,9 @@
                 }
             }
 
-
+            window.onorientationchange = function (event) {
+                back();
+            }
             current.addEventListener('touchstart', start);
             current.addEventListener('touchmove', move);
             current.addEventListener('touchend', end);

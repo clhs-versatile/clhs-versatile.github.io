@@ -399,9 +399,8 @@
             }
             </style>
             <script>
-            const speed = 0.06;
-            const fadeOutSpeed = 0.3;
-            const fadeInSpeed = 0.5;
+            const speed = 0.05;
+
             var current = document.querySelector("#current");
             var list_item = document.querySelectorAll('.item');
             var lerping = [];
@@ -467,7 +466,7 @@
                 let timerId = setInterval(function () {
                     list_item[listI].style.left = lerp(list_item[listI].offsetLeft, endPos, speed) + "px";
                     lerping.push([listI, timerId, endPos]);
-                    if (Math.abs(list_item[listI].offsetLeft - endPos) < 0.02*Math.abs(startPos - endPos)) {
+                    if (Math.abs(list_item[listI].offsetLeft - endPos) < 0.03*Math.abs(startPos - endPos)) {
 
                         list_item[listI].style.left = endPos + "px";
                         for(let i = 0; i < lerping.length; i++){
@@ -477,7 +476,7 @@
                         }
                         clearInterval(timerId);
                     }
-                }, 4);
+                }, 2);
             }
             function back() {
                 let Index = findRole();

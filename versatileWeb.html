@@ -456,6 +456,9 @@
                 return a + alpha * dist;
             }
             function lerpMove(listI, endPos) {
+
+                list_item[listI].style.left = endPos + "px";
+                /*
                 for(let i = 0; i < lerping.length; i++){
                     if(lerping[i][0] == listI){
                         list_item[lerping[i][0]].style.left = lerping[i][2] + "px";
@@ -476,7 +479,7 @@
                         }
                         
                     }
-                }, 10);
+                }, 10);*/
             }
             function back() {
                 let Index = findRole();

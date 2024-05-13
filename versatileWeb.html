@@ -452,9 +452,7 @@
             }
             function lerp(a, b, alpha) {
                 let dist = (b - a);
-                if (Math.abs(dist) < 5) {
-                    return b;
-                }
+                
                 return a + alpha * dist;
             }
             function lerpMove(listI, endPos) {
@@ -487,30 +485,7 @@
                 lerpMove(Index[0], window.innerWidth * -1);
                 lerpMove(Index[2], window.innerWidth);
             }
-            function fadeOut(target) {
-                let timerId = setInterval(function () {
-                    target.style.opacity = lerp(target.style.opacity, 0, speed);
-
-                    if (Math.abs(target.style.opacity - 0) < 1) {
-
-                        target.style.opacity = "0";
-
-                        clearInterval(timerId);
-                    }
-                }, 10);
-            }
-            function fadeIn(target) {
-                let timerId = setInterval(function () {
-                    target.style.opacity = lerp(target.style.opacity, 1, speed);
-
-                    if (Math.abs(target.style.opacity - 1) < 1) {
-
-                        target.style.opacity = "1";
-
-                        clearInterval(timerId);
-                    }
-                }, 10);
-            }
+            
             function end(e) {
 
                 let Index = findRole();
@@ -519,7 +494,7 @@
 
                     lerpMove(Index[1], window.innerWidth);
                     lerpMove(Index[0], 0);
-
+                    
                     list_item[Index[0]].id = "current";
                     list_item[Index[1]].id = "";
                     list_item[Index[0]].addEventListener('touchstart', start);

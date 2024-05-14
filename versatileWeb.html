@@ -528,14 +528,14 @@
             }
 
             class orientationAdjust extends Activity {
-                OrientationEventListener m_listener;
+                OrientationEventListener mlistener;
                 
                  @Override
                 public void OnCreate (Bundle savedInstanceState) {
                     super.onCreate(savedInstanceState);
                      setContentView(R.layout.main);
 
-                     m_listener = new OrientationEventListener(this, SensorManager.SENSOR_DELAY_NORMAL){
+                     mlistener = new OrientationEventListener(this, SensorManager.SENSOR_DELAY_NORMAL){
 
                          @Override
                          public void onOrientationChanged(int Orientation){
@@ -545,18 +545,18 @@
                             list_item[Index[2]].style.left = window.innerWidth + "px";
                          }
                      };
-                     if(m_listener.canDetectOrientation()){
-                         m_listener.enable();
+                     if(mlistener.canDetectOrientation()){
+                         mlistener.enable();
                      }
                      else{
-                         m_listener.disable();
+                         mlistener.disable();
                      }
                 }
 
                 @Override
                 protected void onDestroy(){
                     super.onDestroy();
-                    m_listener.disable();
+                    mlistener.disable();
                 }
             }
 

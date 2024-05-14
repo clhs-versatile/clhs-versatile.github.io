@@ -526,40 +526,8 @@
                     back();
                 }
             }
-
-            class orientationAdjust extends Activity {
-                OrientationEventListener mlistener;
-                
-                 @Override
-                public void OnCreate (Bundle savedInstanceState) {
-                    super.onCreate(savedInstanceState);
-                     setContentView(R.layout.main);
-
-                     mlistener = new OrientationEventListener(this, SensorManager.SENSOR_DELAY_NORMAL){
-
-                         @Override
-                         public void onOrientationChanged(int Orientation){
-                             let Index = findRole();
-                            list_item[Index[1]].style.left = 0 + "px";
-                            list_item[Index[0]].style.left = window.innerWidth * -1 + "px";
-                            list_item[Index[2]].style.left = window.innerWidth + "px";
-                         }
-                     };
-                     if(mlistener.canDetectOrientation()){
-                         mlistener.enable();
-                     }
-                     else{
-                         mlistener.disable();
-                     }
-                }
-
-                @Override
-                protected void onDestroy(){
-                    super.onDestroy();
-                    mlistener.disable();
-                }
-            }
-
+            //https://stackoverflow.com/questions/5498934/detect-change-in-orientation-using-javascript
+           window.addEventListener("DOM")
         
            /*if ("onorientationchange" in window) {
                 window.onorientationchange = function (event) {

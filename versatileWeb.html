@@ -444,11 +444,11 @@
                 var centerMove = (e.targetTouches[0].pageX - startX);
                 list_item[Index[1]].style.left = centerMove + "px";
                 if (centerMove < 0) {
-                    list_item[Index[0]].style.left = window.innerWidth * -1;
+                    list_item[Index[0]].style.left = window.innerWidth * -1 +"px";
                     list_item[Index[2]].style.left = centerMove + window.innerWidth + "px";
                 }
                 else {
-                    list_item[Index[2]].style.left = window.innerWidth;
+                    list_item[Index[2]].style.left = window.innerWidth + "px";
                     list_item[Index[0]].style.left = centerMove - window.innerWidth + "px";
                 }
 
@@ -466,8 +466,8 @@
                 let timerId = setInterval(function () {
                     list_item[listI].style.left = lerp(list_item[listI].offsetLeft, endPos, speed) + "px";
                     lerping.push([listI, timerId, endPos]);
-                    if (Math.abs(list_item[listI].offsetLeft - endPos) < 5) {
-                        list_item[listI].style.left = list_item[listI].offsetLeft+0.02 * (endPos - startPos) + "px";
+                    if (Math.abs(list_item[listI].offsetLeft - endPos) < 30) {
+                        list_item[listI].style.left = list_item[listI].offsetLeft+0.1 * (endPos - startPos) + "px";
                         
                         if(Math.abs(list_item[listI].offsetLeft - endPos) < 0.1
                            || (list_item[listI].offsetLeft - endPos) * (startPos - endPos) < 0){
@@ -527,7 +527,41 @@
                 }
             }
 
-           if ("onorientationchange" in window) {
+            public class orientationAdjust extends Activity {
+                OrientationEvnetListener m_listener;
+                
+                 @Override
+                public void OnCreate (Bundle savedInstanceState) {
+                    super.onCreate(savedInstanceState);
+                     setContentView(R.layout.main);
+
+                     m_listener = new OrientationEventListener(this, SensorManager.SENSOR_DELAY_NORMAL){
+
+                         @Override
+                         public void onOrientationChanged(int Orientation){
+                             let Index = findRole();
+                            list_item[Index[1]].style.left = 0 + "px";
+                            list_item[Index[0]].style.left = window.innerWidth * -1 + "px";
+                            list_item[Index[2]].style.left = window.innerWidth + "px";
+                         }
+                     };
+                     if(m_listener.canDetectOrientation()){
+                         m_listener.enable();
+                     }
+                     else{
+                         m_listener.disable();
+                     }
+                }
+
+                @Override
+                protected void onDestroy(){
+                    super.onDestroy();
+                    m_listener.disable();
+                }
+            }
+
+        
+           /*if ("onorientationchange" in window) {
                 window.onorientationchange = function (event) {
                     let Index = findRole();
                     list_item[Index[1]].style.left = 0 + "px";
@@ -542,7 +576,8 @@
                     list_item[Index[0]].style.left = window.innerWidth * -1 + "px";
                     list_item[Index[2]].style.left = window.innerWidth + "px";
                 }, false);
-            }
+            }*/
+            
             current.addEventListener('touchstart', start);
             current.addEventListener('touchmove', move);
             current.addEventListener('touchend', end);

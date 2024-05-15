@@ -529,14 +529,25 @@
             //https://stackoverflow.com/questions/5498934/detect-change-in-orientation-using-javascript
            window.addEventListener("DOMContentLoaded", () =>{
                const screenOrientation = screen.orientation.type;
+               var text = document.querySelector(".title");
+                   text.innerText = "Versatile";
                if (screen && screen.orientation !== null) {
+                   
                     window.onorientationchange = function (event) {
+                        text.innerText = "Change";
                         let Index = findRole();
                         list_item[Index[1]].style.left = 0 + "px";
                         list_item[Index[0]].style.left = window.innerWidth * -1 + "px";
                         list_item[Index[2]].style.left = window.innerWidth + "px";
                     }
+                   text.innerText = "Hello";
+                   let Index = findRole();
+                    list_item[Index[1]].style.left = 0 + "px";
+                    list_item[Index[0]].style.left = window.innerWidth * -1 + "px";
+                    list_item[Index[2]].style.left = window.innerWidth + "px";
                }
+               
+               
             } );
         
            /*if ("onorientationchange" in window) {

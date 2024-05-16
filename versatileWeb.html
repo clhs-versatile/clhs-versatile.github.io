@@ -486,7 +486,8 @@
                         pushed = 1;
                     }
                     if (Math.abs(list_item[listI].offsetLeft - endPos) < 0.3*Math.abs(startPos - endPos)) {
-                        list_item[listI].style.left = list_item[listI].offsetLeft+lerp(startPos + 0.7*(endPos - startPos), endPos, speed) + "px";
+                        //(endPos - (startPos + 0.7*(endPos - startPos))) = 0.3*endPos - 0.3*startPos
+                        list_item[listI].style.left = list_item[listI].offsetLeft+0.1 * (0.3*endPos - 0.3*startPos) + "px";
                         
                         if(Math.abs(list_item[listI].offsetLeft - endPos) < 0.1
                            || (list_item[listI].offsetLeft - endPos) * (startPos - endPos) < 0){

@@ -580,6 +580,8 @@
             rightBtn = document.querySelector('.right');
             leftBtn.addEventListener('click', ()=>{
                 let Index = findRole();
+                list_item[Index[2]].style.left = window.innerWidth + "px";
+                
                 lerpMove(Index[1], window.innerWidth * -1);
                 lerpMove(Index[2], 0);
                 list_item[Index[2]].id = "current";
@@ -593,6 +595,7 @@
             });
             rightBtn.addEventListener('click', ()=>{
                 let Index = findRole();
+                list_item[Index[0]].style.left = window.innerWidth * -1 + "px";
                 lerpMove(Index[1], window.innerWidth);
                 lerpMove(Index[0], 0);
                 list_item[Index[0]].id = "current";

@@ -449,7 +449,7 @@
                 startX = e.targetTouches[0].pageX;
             }
             function move(e) {
-                if(lock == 1){
+                if(lock === 1){
                     return;
                 }
                 for(let i = 0; i < lerping.length; i++){
@@ -545,23 +545,23 @@
             //https://stackoverflow.com/questions/5498934/detect-change-in-orientation-using-javascript
            window.addEventListener("DOMContentLoaded", () =>{
                const screenOrientation = screen.orientation.type;
-               if(screenOrientation == "landscape-primary" || screenOrientation =="landscape-secondary"){
+               if(screenOrientation === "landscape-primary" || screenOrientation ==="landscape-secondary"){
                     lock = 1;
                 }
                 else{
                     lock = 0;
                 }
                var text = document.querySelector(".title");
-               text=screenOrientation;
+               text.innerText=screenOrientation;
                if (screen && screen.orientation !== null) {
                    
                     window.onorientationchange = function (event) {
-                        text=screenOrientation;
+                        text.innerText=screenOrientation;
                         let Index = findRole();
                         list_item[Index[1]].style.left = 0 + "px";
                         list_item[Index[0]].style.left = 100 * -1 + "%";
                         list_item[Index[2]].style.left = 100 + "%";
-                        if(screenOrientation == "landscape-primary" || screenOrientation =="landscape-secondary"){
+                        if(screenOrientation === "landscape-primary" || screenOrientation ==="landscape-secondary"){
                             lock = 1;
                         }
                         else{

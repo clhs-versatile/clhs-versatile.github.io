@@ -589,6 +589,10 @@
                     list_item[lerping[i][0]].style.left = lerping[i][2] + "px";
                     clearInterval(lerping[i][1]);
                 }
+                for (let i = 0; i < list_item.length; i++)
+                {
+                    list_item[i].style.left = window.innerWidth + "px";
+                }
                 list_item[Index[2]].style.left = window.innerWidth + "px";
                 list_item[Index[1]].style.left = 0 + "px";
                 lerpMove(Index[1], window.innerWidth * -1);
@@ -609,6 +613,10 @@
                 for(let i = 0; i < lerping.length; i++){
                     list_item[lerping[i][0]].style.left = lerping[i][2] + "px";
                     clearInterval(lerping[i][1]);
+                }
+                for (let i = 0; i < list_item.length; i++)
+                {
+                    list_item[i].style.left = window.innerWidth + "px";
                 }
                 list_item[Index[0]].style.left = window.innerWidth * -1 + "px";
                 list_item[Index[1]].style.left = 0 + "px";

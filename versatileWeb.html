@@ -478,11 +478,13 @@
                 return a + alpha * dist;
             }
             function lerpMove(listI, endPos) {
-                
+                let pushed = 0;
                 let startPos = list_item[listI].offsetLeft;
                 let timerId = setInterval(function () {
-                    list_item[listI].style.left = lerp(list_item[listI].offsetLeft, endPos, speed) + "px";
-                    lerping.push([listI, timerId, endPos]);
+                    if(pushed === 0){
+                        lerping.push([listI, timerId, endPos]);
+                        pushed = 1;
+                    }
                     if (Math.abs(list_item[listI].offsetLeft - endPos) < 0.3*Math.abs(startPos - endPos)) {
                         list_item[listI].style.left = list_item[listI].offsetLeft+lerp(startPos + 0.7*(endPos - startPos), endPos, speed) + "px";
                         
@@ -497,7 +499,9 @@
                         }
                         clearInterval(timerId);
                         }
-                        
+                    }
+                    else{
+                        list_item[listI].style.left = lerp(list_item[listI].offsetLeft, endPos, speed) + "px";
                     }
                 }, 2);
             }

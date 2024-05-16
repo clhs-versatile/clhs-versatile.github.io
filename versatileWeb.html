@@ -334,7 +334,7 @@
                         <p>數學組1</p>
                     </div>
                     <div class="item-text">
-                        <p>在此增加簡介...</p>
+                        <p style="font-size:12px">在此增加簡介...</p>
                     </div>
                     <div class="pdf-show">
                         <iframe src="https://drive.google.com/file/d/1dusbc-ORDy8fe5BhmITlAvDVBqZ85UZt/preview" width="640" height="300" allow="autoplay"></iframe>
@@ -357,7 +357,7 @@
             <style>
             .introduce{
                 position:relative;
-                height:800px;
+                height:500px;
                 margin:0;
                 padding:0;
                 width:100%;
@@ -370,12 +370,14 @@
                 height:500px;
             }
             .item-title{
-                height:200px;
+                height:100px;
                 display:flex;
                 align-items:center;
                 justify-content:center;
             }
-            
+            .item-title p{
+                font-size:36px;
+            }
             .item-text{
                 display:flex;
                 
@@ -547,22 +549,7 @@
                
             } );
         
-           /*if ("onorientationchange" in window) {
-                window.onorientationchange = function (event) {
-                    let Index = findRole();
-                    list_item[Index[1]].style.left = 0 + "px";
-                    list_item[Index[0]].style.left = window.innerWidth * -1 + "px";
-                    list_item[Index[2]].style.left = window.innerWidth + "px";
-
-                }
-            } else if ("screen" in window && "orientation" in window.screen) {
-                window.screen.orientation.addEventListener("change", function (e) {
-                    let Index = findRole();
-                    list_item[Index[1]].style.left = 0 + "px";
-                    list_item[Index[0]].style.left = window.innerWidth * -1 + "px";
-                    list_item[Index[2]].style.left = window.innerWidth + "px";
-                }, false);
-            }*/
+           
             
             current.addEventListener('touchstart', start);
             current.addEventListener('touchmove', move);

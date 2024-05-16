@@ -398,6 +398,9 @@
                 width:600px;
             }
             @media screen and (orientation:portrait){
+                .introduce button{
+                    display:none;
+                }
                 .pdf-show iframe{
                     width:100%;
                 }
@@ -549,9 +552,11 @@
                     lock = 0;
                 }
                var text = document.querySelector(".title");
+               text=screenOrientation;
                if (screen && screen.orientation !== null) {
                    
                     window.onorientationchange = function (event) {
+                        text=screenOrientation;
                         let Index = findRole();
                         list_item[Index[1]].style.left = 0 + "px";
                         list_item[Index[0]].style.left = 100 * -1 + "%";
@@ -564,12 +569,8 @@
                         }
                     }
 
-               }
-               
-               
+               }         
             } );
-        
-           
             
             current.addEventListener('touchstart', start);
             current.addEventListener('touchmove', move);

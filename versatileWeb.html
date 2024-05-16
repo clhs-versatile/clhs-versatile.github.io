@@ -551,12 +551,9 @@
                 else{
                     lock = 0;
                 }
-               var text = document.querySelector(".title");
-               text.innerText=screenOrientation;
                if (screen && screen.orientation !== null) {
                     window.onorientationchange = function (event) {
                         screenOrientation = screen.orientation.type;
-                        text.innerText=screenOrientation;
                         let Index = findRole();
                         list_item[Index[1]].style.left = 0 + "px";
                         list_item[Index[0]].style.left = 100 * -1 + "%";

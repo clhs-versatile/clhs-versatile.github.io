@@ -370,35 +370,40 @@
                 height:500px;
             }
             .item-title{
-                height:1.5em;
+                height:75px;
                 display:flex;
                 align-items:center;
                 justify-content:center;
             }
             .item-title p{
-                font-size:1em;
+                font-size:1.5em;
                 font-family:cute;
             }
             .item-text{
                 display:flex;
+                font-size:1em;
                 align-items:center;
                 justify-content:center;
             }
-            .pdf-show p{
-                font-size:24px;
-                font-family:cute;
-            }
+
             .pdf-show{
                 display:flex;
                 align-items:center;
                 justify-content:center;
             }
+            @media (orientation: portrait){
+                .pdf-show iframe{
+                    width:100%;
+                }
+            }
+            
             .left:hover{
                 background-color:#989898;
             }
             .left:active{
                 background-color:#ffffff;
             }
+            
             </style>
             <script>
             const speed = 0.05;

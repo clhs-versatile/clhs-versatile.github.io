@@ -417,6 +417,7 @@
             var list_item = document.querySelectorAll('.item');
             var lerping = [];
             var startX = 0;
+            var lock = 0;
 
             function findRole() {
                 let Index = -1;
@@ -445,6 +446,9 @@
                 startX = e.targetTouches[0].pageX;
             }
             function move(e) {
+                if(lock == 1){
+                    return;
+                }
                 for(let i = 0; i < lerping.length; i++){
                     list_item[lerping[i][0]].style.left = lerping[i][2] + "px";
                     clearInterval(lerping[i][1]);
@@ -470,9 +474,7 @@
                 return a + alpha * dist;
             }
             function lerpMove(listI, endPos) {
-
-                //list_item[listI].style.left = endPos + "px";
-
+                
                 let startPos = list_item[listI].offsetLeft;
                 let timerId = setInterval(function () {
                     list_item[listI].style.left = lerp(list_item[listI].offsetLeft, endPos, speed) + "px";
@@ -540,6 +542,12 @@
             //https://stackoverflow.com/questions/5498934/detect-change-in-orientation-using-javascript
            window.addEventListener("DOMContentLoaded", () =>{
                const screenOrientation = screen.orientation.type;
+               if(screenOrientation == "landscape-primary" || screenOrientation =="landscape-secondary"){
+                    lock = 1;
+                }
+                else{
+                    lock = 0;
+                }
                var text = document.querySelector(".title");
                if (screen && screen.orientation !== null) {
                    
@@ -548,6 +556,12 @@
                         list_item[Index[1]].style.left = 0 + "px";
                         list_item[Index[0]].style.left = 100 * -1 + "%";
                         list_item[Index[2]].style.left = 100 + "%";
+                        if(screenOrientation == "landscape-primary" || screenOrientation =="landscape-secondary"){
+                            lock = 1;
+                        }
+                        else{
+                            lock = 0;
+                        }
                     }
 
                }

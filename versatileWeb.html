@@ -51,7 +51,7 @@
                     justify-content:center;
                     align-items:center;
                     text-align:center;
-                    height:300px;
+                    height:150px;
                 }
                 .title{
                     
@@ -582,9 +582,7 @@
             leftBtn = document.querySelector('.left');
             rightBtn = document.querySelector('.right');
             leftBtn.addEventListener('click', ()=>{
-                let testText = document.querySelector(".title");
                 let Index = findRole();
-                testText.innerText = Index;
                 for(let i = 0; i < lerping.length; i++){
                     list_item[lerping[i][0]].style.left = lerping[i][2] + "px";
                     clearInterval(lerping[i][1]);
@@ -607,9 +605,7 @@
                 list_item[Index[1]].removeEventListener('touchend', end);
             });
             rightBtn.addEventListener('click', ()=>{
-                let testText = document.querySelector(".title");
                 let Index = findRole();
-                testText.innerText = Index;
                 for(let i = 0; i < lerping.length; i++){
                     list_item[lerping[i][0]].style.left = lerping[i][2] + "px";
                     clearInterval(lerping[i][1]);

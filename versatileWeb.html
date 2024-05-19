@@ -628,9 +628,7 @@
                 list_item[Index[1]].removeEventListener('touchmove', move);
                 list_item[Index[1]].removeEventListener('touchend', end);
                 $('.left').prop('disabled', true);
-                  setTimeout(function(){
-                    $('.left').prop('disabled', false);
-                  },3000);
+                  
             });
             rightBtn.addEventListener('click', ()=>{
                 

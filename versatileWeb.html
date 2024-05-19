@@ -601,6 +601,7 @@
                     list_item[lerping[i][0]].style.left = lerping[i][2] + "px";
                     clearInterval(lerping[i][1]);
                 }
+                lerping = [];
                 for (let i = 0; i < list_item.length; i++)
                 {
                     list_item[i].style.left = window.innerWidth + "px";
@@ -624,6 +625,7 @@
                     list_item[lerping[i][0]].style.left = lerping[i][2] + "px";
                     clearInterval(lerping[i][1]);
                 }
+                lerping = [];
                 for (let i = 0; i < list_item.length; i++)
                 {
                     list_item[i].style.left = window.innerWidth + "px";

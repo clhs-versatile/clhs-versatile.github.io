@@ -604,10 +604,7 @@
             leftBtn = document.querySelector('.left');
             rightBtn = document.querySelector('.right');
             leftBtn.addEventListener('click', ()=>{
-              leftBtn.prop('disabled', true);
-              setTimeout(function(){
-                leftBtn.prop('disabled', false);
-              },3000);
+              
                 let Index = findRole();
                 for(let i = 0; i < lerping.length; i++){
                     list_item[lerping[i][0]].style.left = lerping[i][2] + "px";
@@ -630,12 +627,13 @@
                 list_item[Index[1]].removeEventListener('touchstart', start);
                 list_item[Index[1]].removeEventListener('touchmove', move);
                 list_item[Index[1]].removeEventListener('touchend', end);
+                leftBtn.prop('disabled', true);
+                  setTimeout(function(){
+                    leftBtn.prop('disabled', false);
+                  },3000);
             });
             rightBtn.addEventListener('click', ()=>{
-                rightBtn.prop('disabled', true);
-                  setTimeout(function(){
-                    rightBtn.prop('disabled', false);
-                  },3000);
+                
                 let Index = findRole();
                 for(let i = 0; i < lerping.length; i++){
                     list_item[lerping[i][0]].style.left = lerping[i][2] + "px";
@@ -658,6 +656,10 @@
                 list_item[Index[1]].removeEventListener('touchstart', start);
                 list_item[Index[1]].removeEventListener('touchmove', move);
                 list_item[Index[1]].removeEventListener('touchend', end);
+                rightBtn.prop('disabled', true);
+                  setTimeout(function(){
+                    rightBtn.prop('disabled', false);
+                  },3000);
             });
 
         </script>

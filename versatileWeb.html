@@ -604,7 +604,7 @@
             leftBtn = document.querySelector('.left');
             rightBtn = document.querySelector('.right');
             leftBtn.addEventListener('click', ()=>{
-              
+                $('.left').prop('disabled', true);
                 let Index = findRole();
                 for(let i = 0; i < lerping.length; i++){
                     list_item[lerping[i][0]].style.left = lerping[i][2] + "px";
@@ -627,7 +627,7 @@
                 list_item[Index[1]].removeEventListener('touchstart', start);
                 list_item[Index[1]].removeEventListener('touchmove', move);
                 list_item[Index[1]].removeEventListener('touchend', end);
-                $('.left').prop('disabled', true);
+                
                   
             });
             rightBtn.addEventListener('click', ()=>{

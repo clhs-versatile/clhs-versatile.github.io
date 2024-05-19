@@ -573,6 +573,11 @@
                 }
                if (screen && screen.orientation !== null) {
                     window.onorientationchange = function (event) {
+                        for(let i = 0; i < lerping.length; i++){
+                            list_item[lerping[i][0]].style.left = lerping[i][2] + "px";
+                            clearInterval(lerping[i][1]);
+                        }
+                        lerping = [];
                         screenOrientation = screen.orientation.type;
                         let Index = findRole();
                         list_item[Index[1]].style.left = 0 + "px";

@@ -603,13 +603,17 @@
 
             leftBtn = document.querySelector('.left');
             rightBtn = document.querySelector('.right');
-            let inCooldown = 0;
+            let left_cd = 0;
+            let right_cd = 0;
             leftBtn.addEventListener('click', ()=>{
-                if(inCooldown === 1){
+                if(left_cd === 1){
                     return;
                 }
                 else{
-                    inCooldown = 1;
+                    left_cd = 1;
+                    setTimeout(function(){
+                        left_cd = 0;
+                  },3000);
                 }
                 let Index = findRole();
                 for(let i = 0; i < lerping.length; i++){
@@ -636,7 +640,15 @@
                   
             });
             rightBtn.addEventListener('click', ()=>{
-                
+                if(right_cd === 1){
+                    return;
+                }
+                else{
+                    right_cd = 1;
+                    setTimeout(function(){
+                        right_cd = 0;
+                  },3000);
+                }
                 let Index = findRole();
                 for(let i = 0; i < lerping.length; i++){
                     list_item[lerping[i][0]].style.left = lerping[i][2] + "px";
@@ -659,10 +671,7 @@
                 list_item[Index[1]].removeEventListener('touchstart', start);
                 list_item[Index[1]].removeEventListener('touchmove', move);
                 list_item[Index[1]].removeEventListener('touchend', end);
-                $('.right').prop('disabled', true);
-                  setTimeout(function(){
-                    $('.right').prop('disabled', false);
-                  },3000);
+                
             });
 
         </script>

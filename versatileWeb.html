@@ -627,10 +627,9 @@
                 list_item[Index[1]].removeEventListener('touchstart', start);
                 list_item[Index[1]].removeEventListener('touchmove', move);
                 list_item[Index[1]].removeEventListener('touchend', end);
-                let lbtn = $(this);
-                lbtn.prop('disabled', true);
+                $('.left').prop('disabled', true);
                   setTimeout(function(){
-                    lbtn.prop('disabled', false);
+                    $('.left').prop('disabled', false);
                   },3000);
             });
             rightBtn.addEventListener('click', ()=>{
@@ -657,10 +656,9 @@
                 list_item[Index[1]].removeEventListener('touchstart', start);
                 list_item[Index[1]].removeEventListener('touchmove', move);
                 list_item[Index[1]].removeEventListener('touchend', end);
-                let rbtn = $(this);
-                rbtn.prop('disabled', true);
+                $('.right').prop('disabled', true);
                   setTimeout(function(){
-                    rbtn.prop('disabled', false);
+                    $('.right').prop('disabled', false);
                   },3000);
             });
 

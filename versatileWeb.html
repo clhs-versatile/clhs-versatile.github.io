@@ -338,8 +338,8 @@
         </style>
     
             <div class="introduce">
-                <button class="left">left</button>
-                <button class="right">right</button>
+                <button class="left"><img src = "picture/leftBtn.png" /></button>
+                <button class="right"><img src = "picture/rightBtn.png" /></button>
                 <div class="item" style="left:-100%">
                     <div class="item-title">
                         <p>數學組0</p>
@@ -609,40 +609,7 @@
             let left_cd = 0;
             let right_cd = 0;
             leftBtn.addEventListener('click', ()=>{
-                if(left_cd === 1){
-                    return;
-                }
-                else{
-                    left_cd = 1;
-                    setTimeout(function(){
-                        left_cd = 0;
-                  },500);
-                }
-                let Index = findRole();
-                for(let i = 0; i < lerping.length; i++){
-                    list_item[lerping[i][0]].style.left = lerping[i][2] + "px";
-                    clearInterval(lerping[i][1]);
-                }
-                lerping = [];
-                for (let i = 0; i < list_item.length; i++)
-                {
-                    list_item[i].style.left = window.innerWidth + "px";
-                }
-                list_item[Index[2]].style.left = window.innerWidth + "px";
-                list_item[Index[1]].style.left = 0 + "px";
-                lerpMove(Index[1], window.innerWidth * -1);
-                lerpMove(Index[2], 0);
-                list_item[Index[2]].id = "current";
-                list_item[Index[1]].id = "";
-                list_item[Index[2]].addEventListener('touchstart', start);
-                list_item[Index[2]].addEventListener('touchmove', move);
-                list_item[Index[2]].addEventListener('touchend', end);
-                list_item[Index[1]].removeEventListener('touchstart', start);
-                list_item[Index[1]].removeEventListener('touchmove', move);
-                list_item[Index[1]].removeEventListener('touchend', end);
-                  
-            });
-            rightBtn.addEventListener('click', ()=>{
+                 
                 if(right_cd === 1){
                     return;
                 }
@@ -671,6 +638,40 @@
                 list_item[Index[0]].addEventListener('touchstart', start);
                 list_item[Index[0]].addEventListener('touchmove', move);
                 list_item[Index[0]].addEventListener('touchend', end);
+                list_item[Index[1]].removeEventListener('touchstart', start);
+                list_item[Index[1]].removeEventListener('touchmove', move);
+                list_item[Index[1]].removeEventListener('touchend', end);
+                  
+            });
+            rightBtn.addEventListener('click', ()=>{
+                if(left_cd === 1){
+                    return;
+                }
+                else{
+                    left_cd = 1;
+                    setTimeout(function(){
+                        left_cd = 0;
+                  },500);
+                }
+                let Index = findRole();
+                for(let i = 0; i < lerping.length; i++){
+                    list_item[lerping[i][0]].style.left = lerping[i][2] + "px";
+                    clearInterval(lerping[i][1]);
+                }
+                lerping = [];
+                for (let i = 0; i < list_item.length; i++)
+                {
+                    list_item[i].style.left = window.innerWidth + "px";
+                }
+                list_item[Index[2]].style.left = window.innerWidth + "px";
+                list_item[Index[1]].style.left = 0 + "px";
+                lerpMove(Index[1], window.innerWidth * -1);
+                lerpMove(Index[2], 0);
+                list_item[Index[2]].id = "current";
+                list_item[Index[1]].id = "";
+                list_item[Index[2]].addEventListener('touchstart', start);
+                list_item[Index[2]].addEventListener('touchmove', move);
+                list_item[Index[2]].addEventListener('touchend', end);
                 list_item[Index[1]].removeEventListener('touchstart', start);
                 list_item[Index[1]].removeEventListener('touchmove', move);
                 list_item[Index[1]].removeEventListener('touchend', end);

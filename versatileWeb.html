@@ -338,8 +338,8 @@
         </style>
     
             <div class="introduce">
-                <button class="left"><img src = "picture/leftBtn.png" /></button>
-                <button class="right"><img src = "picture/rightBtn.png" /></button>
+                <button class="left"></button>
+                <button class="right"></button>
                 <div class="item" style="left:-100%">
                     <div class="item-title">
                         <p>數學組0</p>
@@ -429,7 +429,11 @@
             .left:hover{
                 background-color:#989898;
             }
-
+            .left{
+                background-image:src('picture/leftBtn.png');
+            }.right{
+                background-image:src('picture/rightBtn.png');
+            }
             
             </style>
             <script>

@@ -535,7 +535,17 @@
             .pdf-show object{
                 width:600px;
             }
-
+          @media screen and (max-width:600px) and (orientation:landscape) {
+              .left {
+               margin-top: 30%;
+              }
+              .right{
+               margin-top: 30%;
+              }
+              .item-text p{
+               font-size:0.8rem;
+              }
+             }
             @media screen and (orientation:portrait){
                 .introduce button{
                     display:none;
@@ -594,17 +604,7 @@
             margin-left: 95%; 
             margin-top: 20%;
         }
-            @media only screen and (max-width:600px) and (orientation:landscape) {{
-              .left {
-               margin-top: 30%;
-              }
-              .right{
-               margin-top: 30%;
-              }
-              .item-text p{
-               font-size:0.8rem;
-              }
-             }
+            
             </style>
             <script>
             const speed = 0.05;

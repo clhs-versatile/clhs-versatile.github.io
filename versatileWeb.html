@@ -426,29 +426,45 @@
                     width:100%;
                 }
             }
-            .left:hover{
-                background-color:#989898;
-            }
-            .left{
-                content="";
-                background-color:transparent;
-                width: 0px; 
-                height: 0px; 
-                border-top:50px solid;
-                border-left:100px solid;
-                border-bottom:50px solid;
-                border-right:100px solid;
-                border-color: transparent gray transparent transparent;
-                padding:0px;
-                margin-left:100px;
-            }
-            .right{
-                background-image:url('picture/rightBtn.png');
-                background-size: cover; 
-                width: 300px; 
-                height: 300px; 
-            }
-            
+            .left:hover {
+            border-color: transparent #000000 transparent transparent;
+        }
+
+        .left {
+            position: absolute;
+            z-index: 3;
+            width: 0px;
+            height: 0px;
+            border-bottom: 25px solid transparent;
+            border-right: 25px solid gray;
+            border-top: 25px solid transparent;
+            border-left: 0px;
+            background: none;
+            outline: none;
+            padding: 0;
+            margin-left: 5%;
+            margin-top: 18%;
+        }
+
+
+        .right:hover {
+            border-color: transparent transparent transparent #000000;
+        }
+        .right {
+            position: absolute;
+            z-index: 3;
+            width: 0px;
+            height: 0px;
+            border-bottom: 25px solid transparent;
+            border-left: 25px solid gray;
+            border-top: 25px solid transparent;
+            border-right: 0px;
+            background: none;
+            outline: none;
+            padding: 0;
+            margin-left: 95%;
+            margin-top: 18%;
+        }
             </style>
             <script>
             const speed = 0.05;

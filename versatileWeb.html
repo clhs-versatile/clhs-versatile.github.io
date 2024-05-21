@@ -740,6 +740,9 @@
                             list_item[lerping[i][0]].style.left = lerping[i][2] + "px";
                             clearInterval(lerping[i][1]);
                         }
+                        for (let i = 0; i < list_item.length; i++){
+                            list_item[i].style.left = 100 + "%";
+                        }
                         lerping = [];
                         screenOrientation = screen.orientation.type;
                         let Index = findRole();
@@ -766,7 +769,8 @@
             let left_cd = 0;
             let right_cd = 0;
             leftBtn.addEventListener('click', ()=>{
-                 
+                 let dubugText = document.querySelector('.title');
+                debugText = lerping;
                 if(right_cd === 1){
                     return;
                 }
@@ -801,6 +805,8 @@
                   
             });
             rightBtn.addEventListener('click', ()=>{
+                let dubugText = document.querySelector('.title');
+                debugText = lerping;
                 if(left_cd === 1){
                     return;
                 }

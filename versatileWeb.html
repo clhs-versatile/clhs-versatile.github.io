@@ -12,33 +12,59 @@
     <style>
 
     body{
-        background-image:url('picture/PCBG.jpg');
-        background-repeat: no-repeat;
-        background-size: 100% 100%;
+        
         overflow-y: scroll;
         overflow-x: hidden;
         margin:0;
         padding:0;
     }
-    @media screen and (orientation:portrait){
-       body{
-        background-image:url('picture/PortraitBG.jpg');
-       }
-    }
+    
     @font-face{
         font-family:cute;
         src:url("fonts/NewFont.ttf");
     }
     </style>
     <body>
-        
+        <div class = "title_row">
+            <!--<p class="subtitle">中大壢中成果發表會</p>-->
+            <!--<p class="title">Versatile</p>-->
+            <img src='picture/title.jpg' />
+        </div>
+        <style>
+                .title_row{
+                    //display:flex;
+                    //flex-direction:column;
+                    //justify-content:center;
+                    //text-align:center;
+                    //height:150px;
+                }
+
+                /*.subtitle{
+                    font-size:24px;
+                    font-family:cute;
+                    line-height:30px;
+                    margin:0px;
+                }
+                .title{
+                    font-family:cute;
+                    font-size:50px; 
+                    line-height:60px;
+                    margin:0px;
+                }*/
+         #root{
+          background-image:url('picture/PCBG.jpg');
+          background-repeat: no-repeat;
+          background-size: 100% 100%;
+         }
+         @media screen and (orientation:portrait){
+          #root{
+            background-image:url('picture/PortraitBG.jpg');
+           }
+        }
+         </style>
         <div id="root">
             <div class="titleBar">
-                <div class = "title_row">
-                    <!--<p class="subtitle">中大壢中成果發表會</p>-->
-                    <!--<p class="title">Versatile</p>-->
-                    <img src='picture/title.jpg' />
-                </div>
+                
                 <div class="count_text">
                     <p>month</p>
                     <p>day</p>
@@ -57,29 +83,7 @@
                 
             </div>
             <style>
-                .title{
-                 object-fit:contain;
-                }
-                .title_row{
-                    display:flex;
-                    flex-direction:column;
-                    justify-content:center;
-                    text-align:center;
-                    height:150px;
-                }
-
-                /*.subtitle{
-                    font-size:24px;
-                    font-family:cute;
-                    line-height:30px;
-                    margin:0px;
-                }
-                .title{
-                    font-family:cute;
-                    font-size:50px; 
-                    line-height:60px;
-                    margin:0px;
-                }*/
+                
 
                 .titleBar ul{
                     display:flex;

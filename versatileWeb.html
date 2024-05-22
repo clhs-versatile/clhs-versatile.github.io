@@ -755,6 +755,16 @@
                 else{
                     lock = 0;
                 }
+                let _Index = findRole();
+                for (let i = 0; i < list_item.length; i++)
+                {
+                    if(i !== _Index[0] || i !== _Index[1] || i !== _Index[2]){
+                     list_item[i].display = 'none';
+                    }
+                    else{
+                     list_item[i].display = 'block';
+                    }
+                }
                if (screen && screen.orientation !== null) {
                     window.onorientationchange = function (event) {
                         for(let i = 0; i < lerping.length; i++){
@@ -767,6 +777,15 @@
                         lerping = [];
                         screenOrientation = screen.orientation.type;
                         let Index = findRole();
+                     for (let i = 0; i < list_item.length; i++)
+                      {
+                          if(i !== Index[0] || i !== Index[1] || i !== Index[2]){
+                           list_item[i].display = 'none';
+                          }
+                          else{
+                           list_item[i].display = 'block';
+                          }
+                      }
                         list_item[Index[1]].style.left = 0 + "px";
                         list_item[Index[0]].style.left = 100 * -1 + "%";
                         list_item[Index[2]].style.left = 100 + "%";
@@ -807,6 +826,12 @@
                 lerping = [];
                 for (let i = 0; i < list_item.length; i++)
                 {
+                    if(i !== Index[0] || i !== Index[1] || i !== Index[2]){
+                     list_item[i].display = 'none';
+                    }
+                    else{
+                     list_item[i].display = 'block';
+                    }
                     list_item[i].style.left = window.innerWidth + "px";
                 }
                 list_item[Index[0]].style.left = window.innerWidth * -1 + "px";
@@ -821,7 +846,16 @@
                 list_item[Index[1]].removeEventListener('touchstart', start);
                 list_item[Index[1]].removeEventListener('touchmove', move);
                 list_item[Index[1]].removeEventListener('touchend', end);
-                  
+             Index = findRole();
+                  for (let i = 0; i < list_item.length; i++)
+                {
+                    if(i !== Index[0] || i !== Index[1] || i !== Index[2]){
+                     list_item[i].display = 'none';
+                    }
+                    else{
+                     list_item[i].display = 'block';
+                    }
+                }
             });
             rightBtn.addEventListener('click', ()=>{
                 if(left_cd === 1){
@@ -841,6 +875,12 @@
                 lerping = [];
                 for (let i = 0; i < list_item.length; i++)
                 {
+                    if(i !== Index[0] || i !== Index[1] || i !== Index[2]){
+                     list_item[i].display = 'none';
+                    }
+                    else{
+                     list_item[i].display = 'block';
+                    }
                     list_item[i].style.left = window.innerWidth + "px";
                 }
                 list_item[Index[2]].style.left = window.innerWidth + "px";
@@ -855,7 +895,17 @@
                 list_item[Index[1]].removeEventListener('touchstart', start);
                 list_item[Index[1]].removeEventListener('touchmove', move);
                 list_item[Index[1]].removeEventListener('touchend', end);
-                
+              Index = findRole();
+                for (let i = 0; i < list_item.length; i++)
+                {
+                    if(i !== Index[0] || i !== Index[1] || i !== Index[2]){
+                     list_item[i].display = 'none';
+                    }
+                    else{
+                     list_item[i].display = 'block';
+                    }
+                }
+             
             });
 
         </script>

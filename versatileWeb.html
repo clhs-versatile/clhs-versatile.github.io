@@ -871,11 +871,6 @@
                 list_item[Index[1]].removeEventListener('touchend', end);
                  Index = findRole();
                   list_item[Index[0]].display = 'block';
-
-                leftBtn.disabled = true;
-                setTimeout(function(){
-                        leftBtn.disabled = false;
-                  },1000);
             });
             rightBtn.addEventListener('click', ()=>{
                 /*if(left_cd === 1){
@@ -917,10 +912,6 @@
                 list_item[Index[1]].removeEventListener('touchend', end);
               Index = findRole();
                 list_item[Index[2]].display = 'block';
-                 rightBtn.disabled = true;
-                setTimeout(function(){
-                        rightBtn.disabled = false;
-                  },1000);
              
             });
 

@@ -737,7 +737,9 @@
             }
             
             function end(e) {
-
+                if(lock === 1){
+                    return;
+                }
                 let Index = findRole();
 
                 if (list_item[Index[1]].offsetLeft >= 0.3 * window.innerWidth) {

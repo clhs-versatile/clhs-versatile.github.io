@@ -830,10 +830,10 @@
 
             leftBtn = document.querySelector('.left');
             rightBtn = document.querySelector('.right');
-            let left_cd = 0;
-            let right_cd = 0;
+            //let left_cd = 0;
+            //let right_cd = 0;
             leftBtn.addEventListener('click', ()=>{
-                if(right_cd === 1){
+                /*if(right_cd === 1){
                     return;
                 }
                 else{
@@ -841,7 +841,7 @@
                     setTimeout(function(){
                         right_cd = 0;
                   },1000);
-                }
+                }*/
                 let Index = findRole();
                 for(let i = 0; i < lerping.length; i++){
                     list_item[lerping[i][0]].style.left = lerping[i][2] + "px";
@@ -871,9 +871,14 @@
                 list_item[Index[1]].removeEventListener('touchend', end);
                  Index = findRole();
                   list_item[Index[0]].display = 'block';
+
+                leftBtn.disabled = true;
+                setTimeout(function(){
+                        leftBtn.disabled = false;
+                  },1000);
             });
             rightBtn.addEventListener('click', ()=>{
-                if(left_cd === 1){
+                /*if(left_cd === 1){
                     return;
                 }
                 else{
@@ -881,7 +886,8 @@
                     setTimeout(function(){
                         left_cd = 0;
                   },1000);
-                }
+                }*/
+                
                 let Index = findRole();
                 for(let i = 0; i < lerping.length; i++){
                     list_item[lerping[i][0]].style.left = lerping[i][2] + "px";
@@ -911,6 +917,10 @@
                 list_item[Index[1]].removeEventListener('touchend', end);
               Index = findRole();
                 list_item[Index[2]].display = 'block';
+                 rightBtn.disabled = true;
+                setTimeout(function(){
+                        rightBtn.disabled = false;
+                  },1000);
              
             });
 

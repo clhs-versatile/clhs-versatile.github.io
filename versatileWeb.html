@@ -212,6 +212,14 @@
                 function timer(){
                     var time_now = Date.now();
                     var timeDiff = report.getTime() - time_now;
+                    if(timeDiff <= 0){
+                        list[0].innerText = "00";
+                        list[1].innerText = "00";
+                        list[2].innerText = "00";
+                        list[3].innerText = "00";
+                        list[4].innerText = "00";
+                        return;
+                    }
                     let dayNum = Math.floor(timeDiff / 1000 / 60 / 60 / 24);
                     timeDiff -= dayNum * 1000 * 60 * 60 * 24;
                     let hourNum = Math.floor(timeDiff / 1000 / 60 / 60);
@@ -232,6 +240,7 @@
                     if(secNum < 10){
                         secNum = "0" + secNum;
                     }
+                    
                     list[0].innerText = "00";
                     list[1].innerText = dayNum;
                     list[2].innerText = hourNum;

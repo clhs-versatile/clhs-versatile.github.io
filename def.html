@@ -1,13 +1,41 @@
 <!DOCTYPE html>
-<html>
+<html lang="zh-Hant">
 <head>
-    <title>Member list</title>
+  <meta charset="UTF-8">
+  <title>儲存資料成 JSON</title>
 </head>
 <body>
-    <h1>Click to list members</h1>
-    <form action='abc.php' method="GET">
-        <input type="text" name="limit" placeholder="limit">
-        <input type="submit">
-    </form>
+  <h2>輸入資料</h2>
+  <form id="myForm">
+    名字：<input type="text" id="name"><br><br>
+    年齡：<input type="number" id="age"><br><br>
+    <button type="submit">儲存成 JSON</button>
+  </form>
+
+  <script>
+    document.getElementById("myForm").addEventListener("submit", function(e) {
+      e.preventDefault(); // 阻止表單自動送出
+
+      // 取得輸入的資料
+      const data = {
+        name: document.getElementById("name").value,
+        age: document.getElementById("age").value
+      };
+
+      // 轉成 JSON 字串
+      const jsonStr = JSON.stringify(data, null, 2);
+
+      // 建立 blob 並觸發下載
+      const blob = new Blob([jsonStr], { type: "application/json" });
+      const url = URL.createObjectURL(blob);
+
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = "data.json";
+      a.click();
+
+      URL.revokeObjectURL(url); // 釋放記憶體
+    });
+  </script>
 </body>
 </html>

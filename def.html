@@ -25,7 +25,7 @@
       localStorage.setItem("myData", JSON.stringify(data));
 
       const data = JSON.parse(localStorage.getItem("myData"));
-      document.getElementById("showText").innerText = data;
+      document.getElementById("showText").textContent = `名字：${data.name}，年齡：${data.age}`;
     });
   </script>
 </body>

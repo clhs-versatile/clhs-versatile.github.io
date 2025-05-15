@@ -2,31 +2,49 @@
 <html lang="zh-Hant">
 <head>
   <meta charset="UTF-8">
-  <title>儲存資料成 JSON</title>
+  <title>localStorage 儲存並顯示資料</title>
 </head>
 <body>
-  <h2>輸入資料</h2>
+  <h2>請輸入資料</h2>
+
   <form id="myForm">
-    名字：<input type="text" id="name"><br><br>
-    年齡：<input type="number" id="age"><br><br>
-    <button type="submit">儲存成 JSON</button>
+    名字：<input type="text" id="name" required><br><br>
+    年齡：<input type="number" id="age" required><br><br>
+    <button type="submit">儲存</button>
   </form>
-  <p id = "showText">內容在這...</p>
+
+  <h3>目前儲存的資料：</h3>
+  <p id="output">尚未有資料</p>
+
   <script>
-    document.getElementById("myForm").addEventListener("submit", function(e) {
-      e.preventDefault(); // 阻止表單自動送出
+    // 嘗試從 localStorage 讀取並顯示
+    function showStoredData() {
+      const stored = localStorage.getItem("userData");
+      const output = document.getElementById("output");
 
-      // 取得輸入的資料
-      const data = {
-        name: document.getElementById("name").value,
-        age: document.getElementById("age").value
-      };
+      if (stored) {
+        const data = JSON.parse(stored);
+        output.textContent = `名字：${data.name}，年齡：${data.age}`;
+      } else {
+        output.textContent = "尚未有資料";
+      }
+    }
 
-      localStorage.setItem("myData", JSON.stringify(data));
+    // 儲存資料到 localStorage 並更新顯示
+    document.getElementById("myForm").addEventListener("submit", function(event) {
+      event.preventDefault();
 
-      const data = JSON.parse(localStorage.getItem("myData"));
-      document.getElementById("showText").textContent = `名字：${data.name}，年齡：${data.age}`;
+      const name = document.getElementById("name").value;
+      const age = document.getElementById("age").value;
+
+      const data = { name, age };
+      localStorage.setItem("userData", JSON.stringify(data));
+
+      showStoredData(); // 更新顯示
     });
+
+    // 初始載入時也要顯示資料（如果有的話）
+    showStoredData();
   </script>
 </body>
 </html>

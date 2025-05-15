@@ -11,7 +11,7 @@
     年齡：<input type="number" id="age"><br><br>
     <button type="submit">儲存成 JSON</button>
   </form>
-
+  <p id = "showText">內容在這...</p>
   <script>
     document.getElementById("myForm").addEventListener("submit", function(e) {
       e.preventDefault(); // 阻止表單自動送出
@@ -22,19 +22,10 @@
         age: document.getElementById("age").value
       };
 
-      // 轉成 JSON 字串
-      const jsonStr = JSON.stringify(data, null, 2);
+      localStorage.setItem("myData", JSON.stringify(data));
 
-      // 建立 blob 並觸發下載
-      const blob = new Blob([jsonStr], { type: "application/json" });
-      const url = URL.createObjectURL(blob);
-
-      const a = document.createElement("a");
-      a.href = url;
-      a.download = "data.json";
-      a.click();
-
-      URL.revokeObjectURL(url); // 釋放記憶體
+      const data = JSON.parse(localStorage.getItem("myData"));
+      document.getElementById("showText").innerText = data;
     });
   </script>
 </body>

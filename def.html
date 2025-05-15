@@ -18,10 +18,12 @@
 
   <h3>目前儲存的資料：</h3>
   <p id="output">尚未有資料</p>
-  <img id="outputImage" style="max-width: 200px; display: none;" alt="上傳的圖片">
+  <img id="outputImage" style="max-width: 200px; display: none;" alt="上傳的圖片"><br><br>
+
+  <!-- 🔴 新增的清除按鈕 -->
+  <button id="clearBtn">清除資料</button>
 
   <script>
-    // 顯示儲存的資料（包含圖片）
     function showStoredData() {
       const stored = localStorage.getItem("userData");
       const output = document.getElementById("output");
@@ -43,7 +45,6 @@
       }
     }
 
-    // 處理表單提交
     document.getElementById("myForm").addEventListener("submit", function(event) {
       event.preventDefault();
 
@@ -60,7 +61,7 @@
           localStorage.setItem("userData", JSON.stringify(data));
           showStoredData();
         };
-        reader.readAsDataURL(imageFile); // 將圖片轉成 base64
+        reader.readAsDataURL(imageFile);
       } else {
         const data = { name, age, imageData: null };
         localStorage.setItem("userData", JSON.stringify(data));
@@ -68,8 +69,13 @@
       }
     });
 
-    // 初始載入時顯示資料
-    showStoredData();
+    // 🔴 清除 localStorage 和畫面
+    document.getElementById("clearBtn").addEventListener("click", function() {
+      localStorage.removeItem("userData");
+      showStoredData();
+    });
+
+    showStoredData(); // 初次載入時執行
   </script>
 </body>
 </html>

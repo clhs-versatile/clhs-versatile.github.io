@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <title>localStorage 儲存並顯示含圖片的資料</title>
+</head>
+<body>
+  <h2>請輸入資料</h2>
+
+  <form id="myForm">
+    名字：<input type="text" id="name" required><br><br>
+    年齡：<input type="number" id="age" required><br><br>
+    圖片：<input type="file" id="image" accept="image/*"><br><br>
+    <button type="submit">儲存</button>
+  </form>
+
+  <hr>
+
+  <h3>目前儲存的資料：</h3>
+  <p id="output">尚未有資料</p>
+  <img id="outputImage" style="max-width: 200px; display: none;" alt="上傳的圖片"><br><br>
+
+  <!-- 🔴 新增的清除按鈕 -->
+  <button id="clearBtn">清除資料</button>
+
+  <script>
+    function showStoredData() {
+      const stored = localStorage.getItem("userData");
+      const output = document.getElementById("output");
+      const outputImage = document.getElementById("outputImage");
+
+      if (stored) {
+        const data = JSON.parse(stored);
+        output.textContent = `名字：${data.name}，年齡：${data.age}`;
+
+        if (data.imageData) {
+          outputImage.src = data.imageData;
+          outputImage.style.display = "block";
+        } else {
+          outputImage.style.display = "none";
+        }
+      } else {
+        output.textContent = "尚未有資料";
+        outputImage.style.display = "none";
+      }
+    }
+
+    document.getElementById("myForm").addEventListener("submit", function(event) {
+      event.preventDefault();
+
+      const name = document.getElementById("name").value;
+      const age = document.getElementById("age").value;
+      const imageFile = document.getElementById("image").files[0];
+
+      if (imageFile) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+          const imageData = e.target.result;
+
+          const data = { name, age, imageData };
+          localStorage.setItem("userData", JSON.stringify(data));
+          showStoredData();
+        };
+        reader.readAsDataURL(imageFile);
+      } else {
+        const data = { name, age, imageData: null };
+        localStorage.setItem("userData", JSON.stringify(data));
+        showStoredData();
+      }
+    });
+
+    // 🔴 清除 localStorage 和畫面
+    document.getElementById("clearBtn").addEventListener("click", function() {
+      localStorage.removeItem("userData");
+      showStoredData();
+    });
+
+    showStoredData(); // 初次載入時執行
+  </script>
+</body>
+</html>
